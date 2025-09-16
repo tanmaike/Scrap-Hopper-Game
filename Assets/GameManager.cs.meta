@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d95c8bbfa8474470382bbccb34f06506
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - platformPrefab: {fileID: 6011618344632336737, guid: 14a60d710003f4d06a87437c9b9cf905, type: 3}
+  - fuelPrefab1: {fileID: 6008012501068366271, guid: ccd3cb715b1c949639013b4e1dbe481f, type: 3}
+  - fuelPrefab2: {fileID: 6008012501068366271, guid: 2bd2e6fec54e24d26b7f03a7c8a441fc, type: 3}
+  - enemy1Prefab: {fileID: 3104341128812145988, guid: 1457e36e28caf4281a92f941b30e0f5a, type: 3}
+  - enemy2Prefab: {fileID: 3104341128812145988, guid: fa6749d8489ce4c4a972d4ab429aaee7, type: 3}
+  - gemStonePrefab: {fileID: 6008012501068366271, guid: 50238144011e844e6beef425120f27e7, type: 3}
+  - fuelText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
