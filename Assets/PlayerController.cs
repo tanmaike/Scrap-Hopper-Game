@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : GameManager {
 
     public float moveSpeed = 8f;
-    public float jumpForce = 14f;
+    public float regularJumpForce = 10f;
+    public float jumpForce = 15f;
     public float jumpCooldown = 1f;
     public GameObject gameHUD;
     public GameObject deathScreen;
@@ -40,6 +41,9 @@ public class PlayerController : GameManager {
             if (Input.GetButton("Jump") && isGrounded  && fm.fuelPercent >= 3) {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+            else if (isGrounded) {
+                rb.velocity = new Vector2(rb.velocity.x, regularJumpForce);
+            }
 
             if (fm.fuelPercent == 0) KillState();
         }
@@ -73,7 +77,7 @@ public class PlayerController : GameManager {
             if (collision.gameObject.CompareTag("Platform")) {
                 if (Input.GetButton("Jump") && isGrounded && fm.fuelPercent >= 6) { 
                     sfxManager.jump2SFX();
-                    fm.fuelPercent -= 3.5f;
+                    fm.fuelPercent -= 4f;
                 }
                 else if (isGrounded) {
                     sfxManager.jump1SFX();
@@ -97,15 +101,15 @@ public class PlayerController : GameManager {
                     sfxManager.collectFuel1SFX();
                 }
             }
-            if(collision.gameObject.CompareTag("Gemstone")) {
+            else if(collision.gameObject.CompareTag("Gemstone")) {
                 Destroy(collision.gameObject);
                 fm.gemstoneCount += 1;
                 sfxManager.collectGemSFX();
                 if (fm.gemstoneCount == 10) VictoryState();
             }
-            if (collision.gameObject.CompareTag("Hurtful")) TakeDamage();
+            else if (collision.gameObject.CompareTag("Hurtful")) TakeDamage();
 
-            if (collision.gameObject.CompareTag("Lethal")) KillState();
+            else if (collision.gameObject.CompareTag("Lethal")) KillState();
         }
     }
 
@@ -119,11 +123,32 @@ public class PlayerController : GameManager {
     private IEnumerator BecomeTemporarilyInvincible() {
         isInvulnerable = true;
 
-        for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime) { 
+        StartCoroutine(playerFlash());
+
+        for (float i = 0; i < invincibilityDurationSeconds; i += invincibilityDeltaTime) {
             yield return new WaitForSeconds(invincibilityDeltaTime);
         }
 
         isInvulnerable = false;
+    }
+
+    private IEnumerator playerFlash() {
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        Material defaultMaterial = spriteRenderer.material;
+        Material flashMaterial = null;
+        Material spritesDefault = Resources.Load<Material>("Sprites-Default");
+
+        bool isInvisible = false;
+        
+        while(isInvulnerable) {
+            if (isInvisible) spriteRenderer.material = defaultMaterial;
+            else spriteRenderer.material = flashMaterial;
+            
+            isInvisible = !isInvisible;
+            yield return new WaitForSeconds(0.05f);
+
+            spriteRenderer.material = defaultMaterial;
+        }
     }
 
     private void KillState() {

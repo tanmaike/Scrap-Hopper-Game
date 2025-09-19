@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update() {
-        fuelPercent -= Time.deltaTime * 3.25f;
+        fuelPercent -= Time.deltaTime * 3.75f;
         fuelText.text = fuelPercent.ToString("0") + "%\n" + gemstoneCount.ToString("0") + " / 10";
     }
 }

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1928296148810043695}
   - component: {fileID: 3267912538861538702}
   - component: {fileID: 6689828367466427176}
+  - component: {fileID: 6277437609110497035}
+  - component: {fileID: -957549174619009290}
   m_Layer: 0
   m_Name: BigFuel
   m_TagString: BigFuel
@@ -120,7 +122,7 @@ BoxCollider2D:
   m_Offset: {x: -0.015, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.47058824, y: 0.5}
     oldSize: {x: 0.53125, y: 0.6875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -130,3 +132,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.7}
   m_EdgeRadius: 0
+--- !u!95 &6277437609110497035
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6008012501068366271}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed257ca2901004b329c4ce4f053cfa47, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-957549174619009290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6008012501068366271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc401edf201247058739f4690b4cccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
